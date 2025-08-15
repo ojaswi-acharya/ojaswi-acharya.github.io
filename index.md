@@ -9,9 +9,9 @@ title: Ojaswi Acharya
 </p>
 
 <!-- Main content from Ojaswi Acharya.md -->
-Ojaswi Acharya
-# oacharya@umass.edu
-ï https://www.linkedin.com/in/ojaswi-acharya
+# Ojaswi Acharya
+oacharya@umass.edu
+https://www.linkedin.com/in/ojaswi-acharya
 
 ## Summary
 I am a PhD candidate at Manning College of Information and Computer Sciences at University of Massachusetts, Amherst. I am advised by Prof. Adam O’Neill. I am affiliated with the Cryptography lab. Before joining UMass, I did my undergraduate at Smith College.
