@@ -3,6 +3,11 @@ layout: home
 title: Ojaswi Acharya
 ---
 
+<!-- Profile Photo -->
+<p style="text-align:center; margin-bottom: 2rem;">
+  <img src="assets/img/photo.jpg" alt="Ojaswi Acharya" style="width:160px; height:160px; object-fit:cover; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,0.10);">
+</p>
+
 <!-- Main content from Ojaswi Acharya.md -->
 Ojaswi Acharya
 # oacharya@umass.edu
