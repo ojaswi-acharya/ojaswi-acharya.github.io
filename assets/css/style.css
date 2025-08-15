@@ -14,13 +14,67 @@ main {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+
 h1, h2, h3 {
   color: #2a4d69;
+  margin-top: 2rem;
 }
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
 a {
   color: #007acc;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+}
+
+code, pre {
+  background: #f4f4f4;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.95em;
+}
+
+/* Add spacing between sections */
+section, .section {
+  margin-bottom: 2.5rem;
+}
+
+/* Style for email and LinkedIn */
+#contact {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
 }
