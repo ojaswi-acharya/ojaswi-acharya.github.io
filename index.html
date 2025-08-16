@@ -1,99 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ojaswi Acharya</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ojaswi Acharya | Cryptography</title>
+  <meta name="description" content="Portfolio of Ojaswi Acharya — PhD Candidate in Cryptography at UMass Amherst. Research in functional encryption, verifiable aggregation, privacy-preserving computation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Ojaswi Acharya | Cryptography" />
+  <meta property="og:description" content="PhD Candidate in Cryptography at UMass Amherst. Functional encryption, verifiable aggregation, privacy-preserving ML." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/photo.jpg" />
+  <meta name="theme-color" content="#0f172a" />
   <style>
-    .profile-photo {
-      display: block;
-      margin: 2rem auto 1.5rem auto;
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    :root{
+      --bg: #0b1020;           /* dark bg */
+      --bg-alt: #0f172a;       /* section bg dark */
+      --card: #101928;
+      --text: #e5e7eb;         /* slate-200 */
+      --muted: #94a3b8;        /* slate-400 */
+      --brand: #38bdf8;        /* sky-400 */
+      --brand-2:#a78bfa;       /* violet-400 */
+      --accent:#22c55e;        /* green-500 */
+      --ring: rgba(56,189,248,.35);
+      --shadow: 0 10px 35px rgba(0,0,0,.35);
+      --radius: 16px;
     }
-    .contact {
-      text-align: center;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+    :root.light{
+      --bg: #f6f8fb;
+      --bg-alt: #ffffff;
+      --card: #ffffff;
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569;
+      --brand: #0ea5e9; /* sky-500 */
+      --brand-2: #7c3aed;/* violet-600 */
+      --accent:#16a34a;
+      --ring: rgba(14,165,233,.25);
+      --shadow: 0 10px 25px rgba(2,6,23,.08);
     }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+      line-height:1.6;
+    }
+    a{color: var(--brand); text-decoration: none}
+    a:hover{opacity:.9; text-decoration: underline}
+    .container{max-width: 1000px; margin: 0 auto; padding: 0 20px}
+
+    /* NAV */
+    .skip{position:absolute;left:-9999px}
+    .skip:focus{left:12px; top:12px; background:var(--brand); color:#000; padding:.5rem .75rem; border-radius:8px}
+    header{position:sticky; top:0; z-index:100; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 40%); border-bottom: 1px solid color-mix(in oklab, var(--muted), transparent 85%)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding: .75rem 0}
+    .brand{display:flex; gap:.6rem; align-items:center; font-weight:700; letter-spacing:.2px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .nav a{color:var(--text); text-decoration:none}
+    .nav ul{display:flex; gap:1.1rem; list-style:none; padding:0; margin:0}
+    .nav a.link{color:var(--muted)}
+    .nav a.link[aria-current="page"], .nav a.link:hover{color:var(--text)}
+    .right{display:flex; gap:.6rem; align-items:center}
+
+    /* Buttons */
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.5rem .9rem; border-radius:999px; font-weight:600; border:1px solid color-mix(in oklab, var(--muted), transparent 70%); background: color-mix(in oklab, var(--card), transparent 0%); color:var(--text); box-shadow: var(--shadow); cursor:pointer; transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease}
+    .btn:hover{transform: translateY(-1px)}
+    .btn-ghost{background:transparent; box-shadow:none}
+    .btn-primary{background: var(--brand); color:#0b1020; border-color: color-mix(in oklab, var(--brand), black 20%)}
+    .btn-primary:hover{background: var(--brand-2); color:#fff; border-color: color-mix(in oklab, var(--brand-2), black 20%)}
+
+    /* HERO */
+    .hero{padding: 48px 0 24px}
+    .hero-card{display:grid; grid-template-columns: 140px 1fr; gap:24px; background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 80%); border-radius: var(--radius); padding:24px; box-shadow: var(--shadow)}
+    .avatar{width:140px; height:140px; border-radius:50%; object-fit:cover; border:2px solid color-mix(in oklab, var(--brand), transparent 50%)}
+    h1{font-family:"Playfair Display", serif; font-weight:700; font-size: clamp(28px, 4vw, 40px); line-height:1.2; margin:0}
+    .subtitle{color:var(--muted); margin:.35rem 0 1rem}
+    .tagline{font-size:1.05rem; margin:0 0 1rem}
+    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin: .75rem 0 0}
+    .chip{font-size:.85rem; padding:.3rem .6rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--muted), transparent 70%); color: var(--muted)}
+    .cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top: 1rem}
+
+    /* SECTION */
+    section{padding: 28px 0}
+    .section{background: var(--bg-alt); border:1px solid color-mix(in oklab, var(--muted), transparent 85%); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow)}
+    .section h2{margin:0 0 .5rem; font-size:1.4rem}
+    .section .lead{color:var(--muted); margin:0 0 1rem}
+
+    /* Lists */
+    .pubs{display:grid; gap:16px}
+    .pub{padding:16px; border-radius:12px; border:1px solid color-mix(in oklab, var(--muted), transparent 80%); background: color-mix(in oklab, var(--card), transparent 0%)}
+    .pub .title{font-weight:600}
+    .pub .meta{color:var(--muted); font-size:.95rem}
+    .pub .tags{margin-top:.5rem; display:flex; gap:.5rem; flex-wrap:wrap}
+    .tag{font-size:.78rem; padding:.25rem .55rem; border-radius:999px; font-weight:500; border:1px solid color-mix(in oklab, var(--brand), transparent 60%); background: color-mix(in oklab, var(--brand), white 78%); color: var(--bg); transition: background .15s ease, color .15s ease, border-color .15s ease}
+    .tag:hover{background: var(--brand); color:#fff; border-color: color-mix(in oklab, var(--brand), black 15%)}
+    :root.light .tag{background: color-mix(in oklab, var(--brand), white 85%); color: #0f172a; border-color: color-mix(in oklab, var(--brand), transparent 70%)}
+
+    /* Grid for two columns on wide screens */
+    .grid{display:grid; gap:20px}
+    @media (min-width: 880px){ .grid{grid-template-columns: 1.2fr .8fr} }
+
+    /* Footer */
+    footer{margin: 40px 0 24px; color: var(--muted); font-size:.95rem}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .spacer{height:10px}
+
+    /* Mobile tweaks */
+    @media (max-width: 640px){
+      .hero-card{grid-template-columns: 1fr}
+      .avatar{width:120px;height:120px}
+      .nav ul{display:none}
     }
   </style>
+  <script>
+    // Theme toggle (persisted)
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if(saved === 'light') document.documentElement.classList.add('light');
+    })();
+    function toggleTheme(){
+      const el = document.documentElement;
+      const light = el.classList.toggle('light');
+      localStorage.setItem('theme', light ? 'light':'dark');
+    }
+  </script>
+  <!-- Schema.org Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ojaswi Acharya",
+    "jobTitle": "PhD Candidate, Cryptography",
+    "affiliation": {"@type":"CollegeOrUniversity", "name":"UMass Amherst"},
+    "email": "mailto:oacharya@umass.edu",
+    "image": "assets/img/photo.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/ojaswi-acharya"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <main>
-    <img src="assets/img/photo.jpg" alt="Ojaswi Acharya" class="profile-photo">
-    <div class="contact">
-      <strong>Ojaswi Acharya</strong><br>
-      <a href="mailto:oacharya@umass.edu">oacharya@umass.edu</a><br>
-      <a href="https://www.linkedin.com/in/ojaswi-acharya" target="_blank">LinkedIn</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main">
+      <a href="#home" class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Ojaswi Acharya</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="link" href="#about">About</a></li>
+          <li><a class="link" href="#research">Research</a></li>
+          <li><a class="link" href="#talks">Talks</a></li>
+          <li><a class="link" href="#teaching">Teaching</a></li>
+          <li><a class="link" href="#experience">Experience</a></li>
+          <li><a class="link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="right">
+        <a class="btn btn-ghost" href="#contact" title="Email">Email</a>
+        <button class="btn btn-primary" onclick="toggleTheme()" aria-label="Toggle light/dark">Toggle theme</button>
+      </div>
     </div>
-    <h2>Summary</h2>
-    <p>I am a PhD candidate at Manning College of Information and Computer Sciences at University of Massachusetts, Amherst. I am advised by Prof. Adam O’Neill. I am affiliated with the Cryptography lab. Before joining UMass, I did my undergraduate at Smith College.</p>
-    <p>My research interests lie within the field of Cryptography including functional encryption, secure aggregation and other applications. Currently I am working on function-revealing encryption and applications of functional encryption in privacy-preserving machine learning and data processing.</p>
-    <h2>Education</h2>
-    <ul>
-      <li><strong>2019 – present</strong>: MS/PhD Student, Manning College of Information and Computer Science, University of Massachusetts Amherst, Amherst MA
+  </header>
+
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-card">
+        <img class="avatar" src="assets/img/photo.jpg" alt="Portrait of Ojaswi Acharya" />
+        <div>
+          <h1>Ojaswi Acharya</h1>
+          <p class="subtitle">PhD Candidate, Cryptography — UMass Amherst</p>
+
+          <div class="cta">
+            <!-- <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Download CV</a> -->
+            <!-- <a class="btn btn-ghost" href="https://eprint.iacr.org/" target="_blank" rel="noopener">IACR ePrint</a> -->
+            <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=RlDPiAEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> 
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/ojaswi-acharya" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + SIDEBAR GRID -->
+    <section id="about" class="grid">
+      <article class="section" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p class="lead">I am a PhD candidate in the <a href="https://www.cics.umass.edu/" target="_blank" rel="noopener">Manning College of Information & Computer Sciences</a> at <strong>UMass Amherst</strong>, advised by <a href="https://groups.cs.umass.edu/oneill/" target="_blank" rel="noopener">Adam O’Neill</a> and affiliated with the Cryptography Lab. Previously, I completed my undergraduate degree at Smith College.</p>
+        <p>My research interests lie within the field of Cryptography including functional encryption, secure aggregation and threshold signatures. </p>
+      </article>
+      <aside class="section" aria-label="At a glance">
+        <h2>At a glance</h2>
         <ul>
-          <li>MS: February 2024</li>
-          <li>PhD: May 2026 (expected)</li>
+          <li><strong>Location:</strong> Amherst, MA (USA)</li>
+          <li><strong>Email:</strong> o acharya at umass dot edu</a></li>
+          <li><strong>Expected graduation:</strong> January 2026</li>
         </ul>
-      </li>
-      <li><strong>2015 – 2019</strong>: BA in Mathematics and Computer Science, Smith College, Northampton MA</li>
-    </ul>
-    <h2>Research Publications</h2>
-    <ol>
-      <li>Acharya, O., Biswas, S., Feng, W., & O’Neill, A., Adam and Yerukhimovich. (2025). Non-interactive verifiable aggregation. Cryptology ePrint Archive, Paper 2025/420, under submission. <a href="https://eprint.iacr.org/2025/420" target="_blank">Link</a></li>
-      <li>Acharya, O., Baldimtsi, F., Gordon, S. D., McVicker, D., & Yadav, A. (2024). Universal vector commitments. International Conference on Security and Cryptography for Networks (SCN). <a href="https://eprint.iacr.org/2024/680" target="_blank">Link</a></li>
-      <li>Acharya, O., Feng, W., Langrehr, R., & O’Neill, A. (2024). Access-controlled inner product function-revealing encryption. Cryptology ePrint Archive, Paper 2024/1857. <a href="https://eprint.iacr.org/2024/1857" target="_blank">Link</a></li>
-    </ol>
-    <h2>Invited Talks</h2>
-    <ul>
-      <li><strong>June 02 2023</strong>: DEANN: Outsourcing Approximate Nearest Neighbor Search via Inner-Product Revealing Encryption, Department of Computer Science, ETH Zürich</li>
-      <li><strong>April 19 2024</strong>: Inner Product Function Revealing Encryption, Crypto Research Seminar, MongoDB</li>
-      <li><strong>December 20 2024</strong>: Non-Interactive Verifiable Aggregation (NIVA), AlgoCrypt Seminar, JPMorgan Chase Research</li>
-    </ul>
-    <h2>Work Experience</h2>
-    <ul>
-      <li><strong>2019 - present</strong>: Teaching Assistant, Manning College of Information and Computer Science
+      </aside>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="section" aria-labelledby="research-title">
+      <h2 id="research-title">Selected Publications</h2>
+      <div class="pubs">
+        <div class="pub">
+          <div class="title">Non-Interactive Verifiable Aggregation</div>
+          <div class="meta">O. Acharya, S. Biswas, W. Feng, A. O’Neill, A. Yerukhimovich — <strong>PETS 2025</strong></div>
+          <div class="tags"><a class="tag" href="https://eprint.iacr.org/2025/420" target="_blank" rel="noopener">Link</a></div> 
+        </div>
+        <div class="pub">
+          <div class="title">Access-Controlled Inner-Product Function-Revealing Encryption</div>
+          <div class="meta">O. Acharya, W. Feng, R. Langrehr, A. O’Neill — <strong>Cryptology ePrint Archive</strong></div>
+          <div class="tags"><a class="tag" href="https://eprint.iacr.org/2024/1857" target="_blank" rel="noopener">Link</a></div>
+        </div>
+        <div class="pub">
+          <div class="title">Universal Vector Commitments</div>
+          <div class="meta">O. Acharya, F. Baldimtsi, S. D. Gordon, D. McVicker, A. Yadav — <strong>SCN 2024</strong></div>
+          <div class="tags"><a class="tag" href="https://eprint.iacr.org/2024/680" target="_blank" rel="noopener">Link</a></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </section>
+
+    <!-- TALKS & TEACHING as split grid -->
+    <section class="grid">
+      <article id="talks" class="section" aria-labelledby="talks-title">
+        <h2 id="talks-title">Invited Talks</h2>
         <ul>
-          <li>Applied Cryptography COMPSCI466</li>
-          <li>Introduction to Algorithms COMPSCI 311</li>
-          <li>Advanced Algorithms COMPSCI 611</li>
-          <li>Secure Distributed Systems COMPSCI461/661</li>
+          <li><strong>Dec 2024</strong> — Non-Interactive Verifiable Aggregation (NIVA), AlgoCrypt Seminar, JPMorgan Chase Research</li>
+          <li><strong>Apr 2024</strong> — Inner Product Function Revealing Encryption, Crypto Research Seminar, MongoDB</li>
+          <li><strong>Jun 2023</strong> — DEANN: Outsourcing Approximate Nearest Neighbor Search via IP-FRE, Dept. of Computer Science, ETH Zürich</li>
         </ul>
-      </li>
-      <li><strong>2022</strong>: Summer Research Visit, George Mason University (Dr. Dov Gordon)</li>
-      <li><strong>2019</strong>: Summer Camp Counselor, The Ross Mathematics Program (Number Theory and Abstract Algebra)</li>
-    </ul>
-    <h2>Programming Skills</h2>
-    <p>Python, Java, SQL, LaTeX</p>
-    <h2>Miscellaneous</h2>
-    <h3>Service</h3>
-    <ul>
-      <li><strong>2022</strong>: New Student Committee, Manning College of Information and Computer Science</li>
-      <li>Student Representative for Faculty Hiring, Manning College of Information and Computer Science</li>
-    </ul>
-    <h3>Membership</h3>
-    <ul>
-      <li><strong>2021-present</strong>: International Association for Cryptologic Research</li>
-      <li><strong>2019</strong>: Phi Beta Kappa, Inducted 2019</li>
-    </ul>
-    <h3>Awards and Achievements</h3>
-    <ul>
-      <li><strong>2021-2022</strong>: Outstanding Teaching Assistant Award, Manning College of Information and Computer Sciences</li>
-      <li><strong>2017</strong>: Suzan Rose Benedict Prize, awarded to a sophomore for excellence in Mathematics</li>
-    </ul>
+      </article>
+    </section>
+
+    <!-- EXPERIENCE & AWARDS -->
+    <section class="grid">
+      <article id="experience" class="section" aria-labelledby="exp-title">
+        <h2 id="exp-title">Experience</h2>
+        <ul>
+          <li><strong>2025</strong> — Summer Research Intern, Cryptography Research Group, MongoDB</li>
+          <li><strong>2019–2025</strong> — Teaching Assistant, UMass CICS
+            <ul>
+          <li>Applied Cryptography (COMPSCI 466)</li>
+          <li>Introduction to Algorithms (COMPSCI 311)</li>
+          <li>Advanced Algorithms (COMPSCI 611)</li>
+          <li>Secure Distributed Systems (COMPSCI 461/661)</li>
+        </ul>
+            
+          </li>
+          <li><strong>2022</strong> — Summer Research Visit, George Mason University (with D. Gordon)</li>
+          <li><strong>2019</strong> — Counselor, Ross Mathematics Program (Number Theory & Abstract Algebra)</li>
+        </ul>
+      </article>
+      <aside id="awards" class="section" aria-labelledby="awards-title">
+        <h2 id="awards-title">Awards</h2>
+        <ul>
+          <li><strong>2025</strong> — Thesis Proposal Writing Fellowship, Manning CICS, UMass Amherst.</li>
+          <li><strong>2021–2022</strong> — Outstanding Teaching Assistant Award, Manning CICS, UMass Amherst.</li>
+          <li><strong>2017</strong> — Suzan Rose Benedict Prize, Smith College</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p><strong>Email:</strong> oacharya at umass dot edu</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ojaswi-acharya" target="_blank" rel="noopener">ojaswi-acharya</a></p>
+      <p class="muted">For preprints and code: add links to Google Scholar, DBLP, or GitHub here.</p>
+    </section>
   </main>
+
+  <footer class="container">
+    <hr style="border-color: color-mix(in oklab, var(--muted), transparent 70%)" />
+    <footer>
+      © <span id="y"></span> Ojaswi Acharya · Made with ❤️ & proof systems
+    </footer>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
